@@ -1,6 +1,6 @@
 "scripts": {
   "test": "node test/test.js"
-}
+},
 {
   "name": "app3",
   "version": "1.0.0",
