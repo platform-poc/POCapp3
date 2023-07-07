@@ -1,10 +1,10 @@
 name: SonarCloud Analysis
-
 on:
   push:
     branches:
       - main
       - branch-*
+
 jobs:
   sonarcloud:
     runs-on: ubuntu-latest
