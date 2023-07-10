@@ -20,15 +20,13 @@ jobs:
 
       - name: Install dependencies
         run: |
-            npm install
-            npx webpack
+          npm install
+          npx webpack
+
       - name: Authenticate to Google Cloud
         uses: 'google-github-actions/auth@v1'
         with:
           credentials_json: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+
       - name: Publish artifact to Google Cloud Storage
-        uses: google-github-actions/upload-cloud-storage@v1.0.3
-        with:
-          service_account_key: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS}}
-          path: dist/
-          destination: 'app_ikeapoc_com/app3'
+        run: gsutil -m cp -r dist/* gs://app3_ikeapoc_com
