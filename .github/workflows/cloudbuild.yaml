@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 env:
     PROJECT_ID: clean-mason-391409 # TODO: update Google Cloud project id
-    SERVICE: pochost # TODO: update Cloud Run service name
+    SERVICE: pocapp3 # TODO: update Cloud Run service name
     REGION: europe-west2 # TODO: update Cloud Run service region
 jobs:
   build:
@@ -39,8 +39,8 @@ jobs:
         uses: google-github-actions/deploy-cloudrun@main
         with:
           service_account_key: ${{ secrets.GCP_SA_KEY }}
-          image: gcr.io/${{ env.PROJECT_ID }}/pochost
-          service: pochost
+          image: gcr.io/${{ env.PROJECT_ID }}/pocapp3
+          service: pocapp3
           region: europe-west2
           platform: managed
           # Add any additional flags or configurations as needed
