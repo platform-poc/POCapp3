@@ -62,7 +62,7 @@ jobs:
         uses: google-github-actions/deploy-cloudrun@v1
         with:
           service_account_key: ${{ secrets.GCP_SA_KEY }}
-          image: gcr.io/${{ env.PROJECT_ID }}/pochost2
+          image: gcr.io/${{ env.PROJECT_ID }}/pocapp3
           service: pocapp3
           region: europe-west2
           platform: managed
