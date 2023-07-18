@@ -31,6 +31,13 @@ jobs:
 
       - name: Run lint
         run: npm run lint
+          npm install eslint@8.10.0
+          npm install @microsoft/eslint-formatter-sarif@2.1.7
+          npx eslint .
+            --config .eslintrc.js
+            --ext .js,.jsx,.ts,.tsx
+            --format @microsoft/eslint-formatter-sarif
+            --output-file /tmp/eslint-results.sarif
         continue-on-error: true
 
       - id: 'auth'
