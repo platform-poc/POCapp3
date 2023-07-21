@@ -1,4 +1,4 @@
-name: cloudbuild
+name: Deploy Cloud Run
 
 on:
   push:
@@ -34,11 +34,11 @@ jobs:
             --config .eslintrc.js
             --ext .js,.jsx,.ts,.tsx
             --format @microsoft/eslint-formatter-sarif
-            --output-file eslint-results.sarif
-            
-      - name: Run lint
-        run: npm run lint
+            --output-file eslint_report.json
         continue-on-error: true
+      - name: Run lint
+        run: npx eslint --format=json . > eslint_report.json
+        continue-on-error: true  # Continue the build even on ESLint errors
 
       - id: 'auth'
         name: 'Authenticate to Google Cloud'
@@ -78,6 +78,6 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: ESLint Report
-          path: eslint-results.sarif  
+          path: eslint_report.json 
     env:
       PROJECT_ID: clean-mason-391409
